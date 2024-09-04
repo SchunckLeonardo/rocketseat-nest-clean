@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3333
+@authToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NmUwMGEwNi01NDgzLTQ4MTItODY2ZS0wY2E5NWYwZjNmNjEiLCJpYXQiOjE3MjQ4NjY5MDd9.ThJpSHs4xZVqX-sI-jm9t5lbK8ntpfzc4MOTOM9nLPYx0aV8FKIFfky8SJnBgFH1LO5ad7z_iMjPdC7fSG7XIcrAh65_uQ7I7U3izJHJgY6UCJklE4M7qViBaUOD9vv2nykzVJtJlxTpIGEFMYEBJZpXttvRF7igOGsncI9-9taCNebjXcRRMw71h9GB_ik17QvUdCoNLQmdzIF5jafCRulUkQJAZLhEmD3759P74ZczpkjZS0s_zYzHTCfgDkBnJfWyPh_buEyalSGRTAs6TPgrMQn0U6iy2oDXljJLFhMosA1c-EkSk9d_Sb16hTnWg3rgH_X2mELUdT7IklMevA
+
+# @name authenticate
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "email": "leo@gmail.com",
+  "password": "123456"
+}
+
+###
+
+# @name create_account
+POST {{baseUrl}}/accounts
+Content-Type: application/json
+
+{
+  "name": "Leonardo",
+  "email": "leo@gmail.com",
+  "password": "123456"
+}
+
+###
+
+# @name create_question
+POST {{baseUrl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Learn CSS in 2 days",
+  "content": "Will be incredible this experience"
+}
+
+###
+
+# @name fetch_recent_questions
+GET {{baseUrl}}/questions?page=1
+Authorization: Bearer {{authToken}}
